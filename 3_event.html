@@ -1,0 +1,33 @@
+<html>
+<script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="vue.js" type="text/javascript"></script>
+<script>
+$(function(){
+    new Vue({
+        el: '#app',
+        data: {
+            count: 0
+        },
+        methods: {
+            submitForm: function() {
+                alert("submit");
+            }
+        }
+    });
+});
+</script>
+<body>
+    <div id="app">
+        <form v-on:submit="submitForm">
+            <button type="submit">submit</button>
+        </form>
+        <!-- @ = v-on -->
+        <form @submit.prevent="submitForm">
+            <button type="submit">submit2</button>
+        </form>
+        <br />
+        &nbsp;&nbsp;{{ count }}&nbsp;&nbsp;<button @click="count++">+1</button><button @click="count--">-1</button>
+    </div>
+
+</body>
+</html>

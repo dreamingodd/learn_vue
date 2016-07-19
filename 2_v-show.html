@@ -1,0 +1,30 @@
+<html>
+<body>
+    <div id="app">
+        <form >
+            <div style='color:red;' v-show="!message">
+                No empty! - v-show
+            </div>
+            <div style='color:red;' v-if="!message">
+                No empty! - v-if
+            </div>
+            <textarea v-model="message"></textarea>
+            <button>Send</button>
+        </form>
+        <pre>
+            {{ $data | json }}
+        </pre>
+    </div>
+
+    <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="vue.js" type="text/javascript"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: ''
+            }
+        });
+    </script>
+</body>
+</html>
