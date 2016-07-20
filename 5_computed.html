@@ -1,0 +1,31 @@
+<html>
+<script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/vue/1.0.26-csp/vue.js"></script>
+<script>
+$(function(){
+    new Vue({
+        el : '#app',
+        data : {
+            firstName : '',
+            lastName : '',
+        },
+        computed : {
+            fullName : function() {
+                return this.firstName + "  " + this.lastName;
+            }
+        }
+    });
+});
+</script>
+<body>
+    <div id="app">
+        <p style="margin: 0 auto; width: 20%;">
+            {{ fullName }}
+            <br />
+            <input v-model="firstName" />
+            <br />
+            <input v-model="lastName" />
+        </p>
+    </div>
+</body>
+</html>

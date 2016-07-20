@@ -1,0 +1,42 @@
+<html>
+<script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/vue/1.0.26-csp/vue.js"></script>
+<style>
+#app {
+    width: 25%;
+    margin: 0 auto;
+}
+.completed {
+    text-decoration: line-through;
+}
+</style>
+<script>
+$(function(){
+    new Vue({
+        el : '#app',
+        data : {
+            tasks : [
+                {name: 'abcd', completed: false},
+                {name: 'efg', completed: true},
+                {name: 'hijk', completed: false},
+                {name: 'lmn', completed: false}
+            ]
+        },
+        methods : {
+            changeTaskStatus : function(task) {
+                task.completed = ! task.completed;
+            }
+        }
+    });
+});
+</script>
+<body>
+    <div id="app">
+        <ul>
+            <li @click="changeTaskStatus(task)" :class="{'completed' : task.completed}" v-for="task in tasks">
+                {{ task.name }}
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
