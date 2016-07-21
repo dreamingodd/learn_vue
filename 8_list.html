@@ -1,0 +1,53 @@
+<html>
+<script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/vue/1.0.26-csp/vue.js"></script>
+<style>
+#app {
+    width: 25%;
+    margin: 0 auto;
+}
+.completed {
+    text-decoration: line-through;
+}
+</style>
+<script>
+$(function(){
+    Vue.component('task-list', {
+        template: '#task-list-template',
+        props: ['list'],
+        methods : {
+            changeTaskStatus : function(task) {
+                task.completed = !task.completed;
+            }
+        }
+    });
+    new Vue({
+        el : '#app',
+        data : {
+            tasks : [
+                {name: 'abcd', completed: false},
+                {name: 'efg', completed: true},
+                {name: 'hijk', completed: false},
+                {name: 'lmn', completed: false}
+            ]
+        }
+    });
+});
+</script>
+<body>
+    <div id="app">
+        <task-list :list="tasks"></task-list>
+    </div>
+    <template id="task-list-template">
+        <ul>
+            <li
+                @click="changeTaskStatus(task)"
+                :class="{'completed' : task.completed}"
+                v-for="task in list"
+            >
+                {{ task.name }}
+            </li>
+        </ul>
+    </template>
+</body>
+</html>
